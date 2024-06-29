@@ -6,7 +6,40 @@ import wallyHard from "../../assets/wally-hard.jpeg";
 
 import Tracker from "../../components/tracker/tracker";
 
+const characters = [
+  {
+    name: "wally",
+    found: false,
+    coords: {
+      x: 18,
+      y: 81,
+    },
+  },
+  {
+    name: "wilma",
+    found: false,
+    coords: {
+      x: 74,
+      y: 74,
+    },
+  },
+  {
+    name: "whitebeard",
+    found: false,
+    coords: {
+      x: 29,
+      y: 16,
+    },
+  },
+];
+
 export default function Game() {
+  const [dimensions, setDimensions] = useState({
+    left: 0,
+    top: 0,
+    width: 0,
+    height: 0,
+  });
   const [showMagnifier, setShowMagnifier] = useState(false);
   const [showFinder, setShowFinder] = useState({
     show: false,
@@ -15,14 +48,16 @@ export default function Game() {
   });
 
   function clickCoords(e) {
-    const wally = {
-      x: 44,
-      y: 14,
-    };
     const { left, top, width, height } =
       e.currentTarget.getBoundingClientRect();
-    const x = ((e.pageX - left - window.scrollX) / width) * 100;
-    const y = ((e.pageY - top - window.scrollY) / height) * 100;
+    setDimensions({
+      left: left,
+      top: top,
+      width: width,
+      height: height,
+    });
+    // const x = ((e.pageX - left - window.scrollX) / width) * 100;
+    // const y = ((e.pageY - top - window.scrollY) / height) * 100;
 
     setShowFinder({
       show: !showFinder.show,
@@ -30,12 +65,17 @@ export default function Game() {
       y: e.pageY - top - window.scrollY,
     });
     setShowMagnifier(false);
+  }
+
+  function findCharacter(coords, index) {
+    const x = (coords.x / dimensions.width) * 100;
+    const y = (coords.y / dimensions.height) * 100;
 
     if (
-      x < wally.x + 4 &&
-      x > wally.x - 4 &&
-      y < wally.y + 4 &&
-      y > wally.y - 4
+      x < characters[index].coords.x + 4 &&
+      x > characters[index].coords.x - 4 &&
+      y < characters[index].coords.y + 4 &&
+      y > characters[index].coords.y - 4
     ) {
       console.log(true);
     } else {
@@ -45,14 +85,16 @@ export default function Game() {
 
   return (
     <>
-      <Tracker />
+      <Tracker characters={characters} />
       <Photo
         photo={wallyHard}
+        characters={characters}
         clickCoords={clickCoords}
         showFinder={showFinder}
         setShowFinder={setShowFinder}
         showMagnifier={showMagnifier}
         setShowMagnifier={setShowMagnifier}
+        findCharacter={findCharacter}
       />
     </>
   );

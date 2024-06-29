@@ -6,11 +6,13 @@ import Finder from "../finder/finder";
 
 export default function Photo({
   photo,
+  characters,
   clickCoords,
   showFinder,
   setShowFinder,
   showMagnifier,
   setShowMagnifier,
+  findCharacter,
 }) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
@@ -46,7 +48,11 @@ export default function Photo({
         showMagnifier={showMagnifier}
         cursorPosition={cursorPosition}
       />
-      <Finder showFinder={showFinder} />
+      <Finder
+        showFinder={showFinder}
+        characters={characters}
+        findCharacter={findCharacter}
+      />
       <img
         className="photo"
         src={photo}
