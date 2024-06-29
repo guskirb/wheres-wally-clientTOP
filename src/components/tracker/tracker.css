@@ -3,6 +3,12 @@
     position: fixed;
     gap: 10px;
     padding: 60px;
+    opacity: 0.4;
+    transition: all 0.2s ease-in-out;
+}
+
+.tracker__container:hover {
+    opacity: 1;
 }
 
 .tracker-img {
@@ -10,4 +16,6 @@
     width: 80px;
     border-radius: 50%;
     background-color: red;
+    display: flex;
+    align-items: center;
 }
