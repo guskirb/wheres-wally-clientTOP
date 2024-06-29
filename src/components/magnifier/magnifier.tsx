@@ -19,8 +19,8 @@ export default function Magnifier({
           display: showMagnifier ? "" : "none",
           backgroundImage: `url(${photo})`,
           backgroundPosition: `${position.x}% ${position.y}%`,
-          left: `${cursorPosition.x - 80}px`,
-          top: `${cursorPosition.y - 80}px`,
+          left: `${cursorPosition.x - 100}px`,
+          top: `${cursorPosition.y - 100}px`,
           pointerEvents: "none",
         }}
       ></div>
