@@ -7,8 +7,8 @@ export default function Finder({ showFinder }) {
       style={
         showFinder.show
           ? {
-              left: `${showFinder.x - 50}px`,
-              top: `${showFinder.y - 50}px`,
+              left: `${showFinder.x - 40}px`,
+              top: `${showFinder.y - 40}px`,
             }
           : { display: "none" }
       }

@@ -4,6 +4,8 @@ import wallyEasy from "../../assets/wally-easy.jpg";
 import wallyMedium from "../../assets/wally-medium.jpg";
 import wallyHard from "../../assets/wally-hard.jpeg";
 
+import Tracker from "../../components/tracker/tracker";
+
 export default function Game() {
   const [showMagnifier, setShowMagnifier] = useState(false);
   const [showFinder, setShowFinder] = useState({
@@ -23,7 +25,7 @@ export default function Game() {
     const y = ((e.pageY - top - window.scrollY) / height) * 100;
 
     setShowFinder({
-      show: true,
+      show: !showFinder.show,
       x: e.pageX - left - window.scrollX,
       y: e.pageY - top - window.scrollY,
     });
@@ -42,13 +44,16 @@ export default function Game() {
   }
 
   return (
-    <Photo
-      photo={wallyHard}
-      clickCoords={clickCoords}
-      showFinder={showFinder}
-      setShowFinder={setShowFinder}
-      showMagnifier={showMagnifier}
-      setShowMagnifier={setShowMagnifier}
-    />
+    <>
+      <Tracker />
+      <Photo
+        photo={wallyHard}
+        clickCoords={clickCoords}
+        showFinder={showFinder}
+        setShowFinder={setShowFinder}
+        showMagnifier={showMagnifier}
+        setShowMagnifier={setShowMagnifier}
+      />
+    </>
   );
 }

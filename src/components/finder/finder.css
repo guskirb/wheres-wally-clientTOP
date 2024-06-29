@@ -7,34 +7,12 @@
 }
 
 .finder-circle {
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
   border: 5px solid red;
   border-radius: 50%;
   animation: grow 0.2s ease-in-out;
 }
-
-@-webkit-keyframes rotate-center {
-    0% {
-      -webkit-transform: rotate(0);
-              transform: rotate(0);
-    }
-    100% {
-      -webkit-transform: rotate(360deg);
-              transform: rotate(360deg);
-    }
-  }
-  @keyframes rotate-center {
-    0% {
-      -webkit-transform: rotate(0);
-              transform: rotate(0);
-    }
-    100% {
-      -webkit-transform: rotate(360deg);
-              transform: rotate(360deg);
-    }
-  }
-  
 
 @keyframes grow {
     0% {
