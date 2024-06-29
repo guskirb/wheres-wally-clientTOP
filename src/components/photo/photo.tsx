@@ -1,16 +1,27 @@
 import { useState } from "react";
 import "./photo.css";
 
-import Magnifier from "./magnifier/magnifier";
+import Magnifier from "../magnifier/magnifier";
+import Finder from "../finder/finder";
 
-export default function Photo({ photo, clickCoords }) {
+export default function Photo({
+  photo,
+  clickCoords,
+  showFinder,
+  setShowFinder,
+  showMagnifier,
+  setShowMagnifier,
+}) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [showMagnifier, setShowMagnifier] = useState(false);
-  const [magnifier, setMagnifier] = useState(false);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
 
   function enableMagnifier() {
-    setMagnifier(!magnifier);
+    setShowMagnifier(!showMagnifier);
+    setShowFinder({
+      x: 0,
+      y: 0,
+      show: false,
+    });
   }
 
   function handleMouseHover(e) {
@@ -31,17 +42,15 @@ export default function Photo({ photo, clickCoords }) {
     <div className="photo__container">
       <Magnifier
         photo={photo}
-        magnifier={magnifier}
         position={position}
         showMagnifier={showMagnifier}
         cursorPosition={cursorPosition}
       />
+      <Finder showFinder={showFinder} />
       <img
         className="photo"
         src={photo}
         onClick={clickCoords}
-        onMouseEnter={() => setShowMagnifier(true)}
-        onMouseLeave={() => setShowMagnifier(false)}
         onMouseMove={handleMouseHover}
       ></img>
       <button onClick={enableMagnifier}>Show Magnifier</button>
