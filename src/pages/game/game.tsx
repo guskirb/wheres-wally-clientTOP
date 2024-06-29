@@ -6,34 +6,36 @@ import wallyHard from "../../assets/wally-hard.jpeg";
 
 import Tracker from "../../components/tracker/tracker";
 
-const characters = [
-  {
-    name: "wally",
-    found: false,
-    coords: {
-      x: 18,
-      y: 81,
-    },
-  },
-  {
-    name: "wilma",
-    found: false,
-    coords: {
-      x: 74,
-      y: 74,
-    },
-  },
-  {
-    name: "whitebeard",
-    found: false,
-    coords: {
-      x: 29,
-      y: 16,
-    },
-  },
-];
-
 export default function Game() {
+  const [characters, setCharacters] = useState([
+    {
+      name: "wally",
+      id: 1,
+      found: false,
+      coords: {
+        x: 18,
+        y: 81,
+      },
+    },
+    {
+      name: "wilma",
+      id: 2,
+      found: false,
+      coords: {
+        x: 74,
+        y: 74,
+      },
+    },
+    {
+      name: "whitebeard",
+      id: 3,
+      found: false,
+      coords: {
+        x: 29,
+        y: 16,
+      },
+    },
+  ]);
   const [dimensions, setDimensions] = useState({
     left: 0,
     top: 0,
@@ -56,8 +58,6 @@ export default function Game() {
       width: width,
       height: height,
     });
-    // const x = ((e.pageX - left - window.scrollX) / width) * 100;
-    // const y = ((e.pageY - top - window.scrollY) / height) * 100;
 
     setShowFinder({
       show: !showFinder.show,
@@ -67,7 +67,8 @@ export default function Game() {
     setShowMagnifier(false);
   }
 
-  function findCharacter(coords, index) {
+  function findCharacter(coords, name) {
+    const index = characters.map((i) => i.name).indexOf(name);
     const x = (coords.x / dimensions.width) * 100;
     const y = (coords.y / dimensions.height) * 100;
 
@@ -78,6 +79,9 @@ export default function Game() {
       y > characters[index].coords.y - 4
     ) {
       console.log(true);
+      const updatedCharacters = [...characters];
+      updatedCharacters[index].found = true;
+      setCharacters(updatedCharacters);
     } else {
       console.log(false);
     }

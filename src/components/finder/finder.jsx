@@ -1,6 +1,28 @@
 import "./finder.css";
 
 export default function Finder({ showFinder, characters, findCharacter }) {
+  const listCharacters = characters.map((character) => (
+    <div
+      className="finder-img"
+      key={character.id}
+      onClick={
+        !character.found
+          ? () => {
+              findCharacter(
+                {
+                  x: showFinder.x,
+                  y: showFinder.y,
+                },
+                character.name
+              );
+            }
+          : null
+      }
+    >
+      {character.name}
+    </div>
+  ));
+
   return (
     <div
       className="finder__container"
@@ -14,50 +36,7 @@ export default function Finder({ showFinder, characters, findCharacter }) {
       }
     >
       <div className="finder-circle" key={showFinder.x}></div>
-      <div className="finder-img__container">
-        <div
-          className="finder-img img1"
-          onClick={() => {
-            findCharacter(
-              {
-                x: showFinder.x,
-                y: showFinder.y,
-              },
-              0
-            );
-          }}
-        >
-          {characters[0].name}
-        </div>
-        <div
-          className="finder-img img2"
-          onClick={() => {
-            findCharacter(
-              {
-                x: showFinder.x,
-                y: showFinder.y,
-              },
-              1
-            );
-          }}
-        >
-          {characters[1].name}{" "}
-        </div>
-        <div
-          className="finder-img img3"
-          onClick={() => {
-            findCharacter(
-              {
-                x: showFinder.x,
-                y: showFinder.y,
-              },
-              2
-            );
-          }}
-        >
-          {characters[2].name}
-        </div>
-      </div>
+      <div className="finder-img__container">{listCharacters}</div>
     </div>
   );
 }
