@@ -1,0 +1,7 @@
+.magnifier-image {
+    width: 140px;
+    height: 140px;
+    border: solid 2px white;
+    position: absolute;
+    border-radius: 50%;
+}
