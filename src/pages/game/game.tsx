@@ -1,9 +1,11 @@
 import Photo from "../../components/photo/photo";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Tracker from "../../components/tracker/tracker";
 
 export default function Game({ photo, difficulty }) {
+  const navigate = useNavigate();
   const [characters, setCharacters] = useState([
     {
       name: "wally",
@@ -56,6 +58,7 @@ export default function Game({ photo, difficulty }) {
 
     if (gameOver) {
       console.log("Game won");
+      navigate("/leaderboard");
     }
   }, [characters]);
 
