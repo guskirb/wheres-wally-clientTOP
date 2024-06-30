@@ -1,27 +1,30 @@
 import "./finder.css";
 
 export default function Finder({ showFinder, characters, findCharacter }) {
-  const listCharacters = characters.map((character) => (
-    <div
-      className="finder-img"
-      key={character.id}
-      onClick={
-        !character.found
-          ? () => {
-              findCharacter(
-                {
-                  x: showFinder.x,
-                  y: showFinder.y,
-                },
-                character.name
-              );
-            }
-          : null
-      }
-    >
-      {character.name}
-    </div>
-  ));
+  const listCharacters = characters.map(
+    (character) =>
+      !character.found && (
+        <div
+          className="finder-img"
+          key={character.id}
+          onClick={
+            !character.found
+              ? () => {
+                  findCharacter(
+                    {
+                      x: showFinder.x,
+                      y: showFinder.y,
+                    },
+                    character.name
+                  );
+                }
+              : null
+          }
+        >
+          {character.name}
+        </div>
+      )
+  );
 
   return (
     <div

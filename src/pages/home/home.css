@@ -1,0 +1,59 @@
+.home__container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  height: 300px;
+  position: absolute;
+  transform: translateY(-32vh);
+}
+
+.wally {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.wally:hover {
+    transform: translateX(150px)
+}
+
+.difficulty__container {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle__container {
+  width: 300px;
+  height: 400px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.difficulty {
+  content: "";
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-size: 350%;
+  background-position: center;
+  transition: 0.4s all ease-in-out;
+  border: 5px solid black;
+}
+
+.difficulty:hover {
+  width: 300px;
+  height: 300px;
+  background-size: 200%;
+}

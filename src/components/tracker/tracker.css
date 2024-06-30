@@ -3,7 +3,7 @@
   position: fixed;
   gap: 10px;
   margin: 60px;
-  opacity: 0.4;
+  opacity: 0.5;
   transition: all 0.2s ease-in-out;
 }
 
@@ -18,4 +18,14 @@
   background-color: red;
   display: flex;
   align-items: center;
+}
+
+.found::after {
+  content: "";
+  background: url("../../assets/tick.svg") no-repeat center center/cover;
+  background-size: contain;
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  transform: translateX(15px);
 }

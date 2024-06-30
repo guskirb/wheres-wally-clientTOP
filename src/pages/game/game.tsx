@@ -1,12 +1,9 @@
 import Photo from "../../components/photo/photo";
-import { useState } from "react";
-import wallyEasy from "../../assets/wally-easy.jpg";
-import wallyMedium from "../../assets/wally-medium.jpg";
-import wallyHard from "../../assets/wally-hard.jpeg";
+import { useState, useEffect } from "react";
 
 import Tracker from "../../components/tracker/tracker";
 
-export default function Game() {
+export default function Game({ photo, difficulty }) {
   const [characters, setCharacters] = useState([
     {
       name: "wally",
@@ -48,6 +45,19 @@ export default function Game() {
     x: 0,
     y: 0,
   });
+
+  useEffect(() => {
+    let gameOver = true;
+    characters.forEach((character) => {
+      if (!character.found) {
+        gameOver = false;
+      }
+    });
+
+    if (gameOver) {
+      console.log("Game won");
+    }
+  }, [characters]);
 
   function clickCoords(e) {
     const { left, top, width, height } =
@@ -91,7 +101,7 @@ export default function Game() {
     <>
       <Tracker characters={characters} />
       <Photo
-        photo={wallyHard}
+        photo={photo}
         characters={characters}
         clickCoords={clickCoords}
         showFinder={showFinder}
