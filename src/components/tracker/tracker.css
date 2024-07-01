@@ -15,9 +15,14 @@
   height: 80px;
   width: 80px;
   border-radius: 50%;
-  background-color: red;
+  background-color: rgb(255, 255, 255);
   display: flex;
   align-items: center;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: 5px solid #00a3e3;
+  outline: 1px solid black;
 }
 
 .found::after {

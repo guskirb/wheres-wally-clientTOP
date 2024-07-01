@@ -4,7 +4,7 @@ import wallyEasy from "../../assets/wally-easy.jpg";
 import wallyMedium from "../../assets/wally-medium.jpg";
 import wallyHard from "../../assets/wally-hard.jpeg";
 import logo from "../../assets/logo.svg";
-import wally from "../../assets/wally.png";
+import wally from "../../assets/home-wally.png";
 
 export default function Home() {
   return (

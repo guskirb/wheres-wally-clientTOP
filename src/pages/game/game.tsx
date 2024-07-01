@@ -34,6 +34,15 @@ export default function Game({ photo, difficulty }) {
         y: 16,
       },
     },
+    {
+      name: "odlaw",
+      id: 4,
+      found: false,
+      coords: {
+        x: 84,
+        y: 79,
+      },
+    },
   ]);
   const [dimensions, setDimensions] = useState({
     left: 0,
@@ -84,6 +93,7 @@ export default function Game({ photo, difficulty }) {
     const index = characters.map((i) => i.name).indexOf(name);
     const x = (coords.x / dimensions.width) * 100;
     const y = (coords.y / dimensions.height) * 100;
+    console.log(x, y);
 
     if (
       x < characters[index].coords.x + 4 &&
