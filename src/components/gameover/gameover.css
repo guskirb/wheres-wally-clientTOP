@@ -1,0 +1,14 @@
+.gameover__container {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.gameover__form {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}

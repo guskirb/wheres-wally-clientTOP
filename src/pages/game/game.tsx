@@ -3,9 +3,11 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Tracker from "../../components/tracker/tracker";
+import GameOver from "../../components/gameover/gameover";
 
 export default function Game({ photo, difficulty }) {
   const navigate = useNavigate();
+  const [gameOver, setGameOver] = useState(false);
   const [characters, setCharacters] = useState([
     {
       name: "wally",
@@ -67,7 +69,8 @@ export default function Game({ photo, difficulty }) {
 
     if (gameOver) {
       console.log("Game won");
-      navigate("/leaderboard");
+      setGameOver(true);
+      // navigate("/leaderboard");
     }
   }, [characters]);
 
@@ -108,6 +111,10 @@ export default function Game({ photo, difficulty }) {
     } else {
       console.log(false);
     }
+  }
+
+  if (gameOver){
+    return <GameOver />
   }
 
   return (
