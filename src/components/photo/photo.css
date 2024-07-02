@@ -9,7 +9,7 @@
   box-sizing: border-box;
 }
 
-button {
+.magnifier-button {
   position: absolute;
   right: 0;
 }
