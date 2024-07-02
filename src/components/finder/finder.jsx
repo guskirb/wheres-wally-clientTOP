@@ -23,7 +23,7 @@ export default function Finder({ showFinder, characters, findCharacter }) {
       !character.found && (
         <div
           className="finder-img"
-          key={character.id}
+          key={character._id}
           style={renderSwitch(character.name)}
           onClick={
             !character.found

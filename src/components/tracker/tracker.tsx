@@ -21,7 +21,7 @@ export default function Tracker({ characters }) {
   const listCharacters = characters.map((character) => (
     <div
       className={character.found ? "found tracker-img" : "tracker-img"}
-      key={character.id}
+      key={character._id}
       style={renderSwitch(character.name)}
     ></div>
   ));

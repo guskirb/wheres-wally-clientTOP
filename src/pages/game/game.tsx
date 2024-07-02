@@ -1,51 +1,24 @@
 import Photo from "../../components/photo/photo";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { getCharacters } from "../../api/characters";
+import { getScores, newScore } from "../../api/score";
 
 import Tracker from "../../components/tracker/tracker";
 import GameOver from "../../components/gameover/gameover";
 
-export default function Game({ photo, difficulty }) {
+export default function Game({
+  photo,
+  difficulty,
+}: {
+  photo: File;
+  difficulty: string;
+}) {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
   const [gameOver, setGameOver] = useState(false);
-  const [characters, setCharacters] = useState([
-    {
-      name: "wally",
-      id: 1,
-      found: false,
-      coords: {
-        x: 18,
-        y: 81,
-      },
-    },
-    {
-      name: "wilma",
-      id: 2,
-      found: false,
-      coords: {
-        x: 74,
-        y: 74,
-      },
-    },
-    {
-      name: "whitebeard",
-      id: 3,
-      found: false,
-      coords: {
-        x: 29,
-        y: 16,
-      },
-    },
-    {
-      name: "odlaw",
-      id: 4,
-      found: false,
-      coords: {
-        x: 84,
-        y: 79,
-      },
-    },
-  ]);
+  const [characters, setCharacters] = useState([]);
+  const [score, setScore] = useState([]);
   const [dimensions, setDimensions] = useState({
     left: 0,
     top: 0,
@@ -60,17 +33,32 @@ export default function Game({ photo, difficulty }) {
   });
 
   useEffect(() => {
-    let gameOver = true;
-    characters.forEach((character) => {
-      if (!character.found) {
-        gameOver = false;
-      }
-    });
+    async function gameSetup() {
+      const response = await Promise.all([
+        getCharacters(difficulty),
+        newScore({ difficulty: difficulty }),
+      ]);
+      setCharacters(response[0]);
+      setScore(response[1]);
+      setLoading(false);
+    }
+    gameSetup();
+  }, []);
 
-    if (gameOver) {
-      console.log("Game won");
-      setGameOver(true);
-      // navigate("/leaderboard");
+  useEffect(() => {
+    if (characters.length === 4) {
+      let gameOver = true;
+      characters.forEach((character) => {
+        if (!character.found) {
+          gameOver = false;
+        }
+      });
+
+      if (gameOver) {
+        console.log("Game won");
+        setGameOver(true);
+        // navigate("/leaderboard");
+      }
     }
   }, [characters]);
 
@@ -99,8 +87,8 @@ export default function Game({ photo, difficulty }) {
     console.log(x, y);
 
     if (
-      x < characters[index].coords.x + 4 &&
-      x > characters[index].coords.x - 4 &&
+      x < characters[index].coords.x + 2 &&
+      x > characters[index].coords.x - 2 &&
       y < characters[index].coords.y + 4 &&
       y > characters[index].coords.y - 4
     ) {
@@ -113,8 +101,12 @@ export default function Game({ photo, difficulty }) {
     }
   }
 
-  if (gameOver){
-    return <GameOver />
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (gameOver) {
+    return <GameOver />;
   }
 
   return (
