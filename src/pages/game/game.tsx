@@ -2,7 +2,7 @@ import Photo from "../../components/photo/photo";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getCharacters } from "../../api/characters";
-import { getScores, newScore } from "../../api/score";
+import { newScore, updateScore } from "../../api/score";
 
 import Tracker from "../../components/tracker/tracker";
 import GameOver from "../../components/gameover/gameover";
@@ -46,6 +46,10 @@ export default function Game({
   }, []);
 
   useEffect(() => {
+    async function endScore() {
+      const response = await updateScore(score._id);
+      setScore(response);
+    }
     if (characters.length === 4) {
       let gameOver = true;
       characters.forEach((character) => {
@@ -56,12 +60,13 @@ export default function Game({
 
       if (gameOver) {
         console.log("Game won");
+        endScore();
         setGameOver(true);
         // navigate("/leaderboard");
       }
     }
   }, [characters]);
-
+  console.log(score);
   function clickCoords(e) {
     const { left, top, width, height } =
       e.currentTarget.getBoundingClientRect();
@@ -81,7 +86,7 @@ export default function Game({
   }
 
   function findCharacter(coords, name) {
-    const index = characters.map((i) => i.name).indexOf(name);
+    const index = characters.map((item) => item.name).indexOf(name);
     const x = (coords.x / dimensions.width) * 100;
     const y = (coords.y / dimensions.height) * 100;
     console.log(x, y);
@@ -106,7 +111,7 @@ export default function Game({
   }
 
   if (gameOver) {
-    return <GameOver />;
+    return <GameOver score={score} />;
   }
 
   return (
