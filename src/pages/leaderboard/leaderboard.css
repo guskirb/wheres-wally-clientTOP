@@ -13,6 +13,40 @@
   -webkit-text-stroke-color: black;
   font-weight: 800;
   font-size: 2.8em;
+  margin: 0;
+}
+
+.header__container {
+  padding: 20px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-flow: column;
+  gap: 10px;
+}
+
+.header__container > div {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.header__container > div > button {
+  background-color: #00a3e3;
+  color: white;
+  border: 1px solid black;
+}
+
+.wally-leaderboard {
+  position: absolute;
+  transform: translateY(100px) translateX(-342px);
+  z-index: 0;
+  transition: all 0.6s ease-in-out;
+}
+
+.wally-leaderboard:hover {
+  transform: translateX(10px);
 }
 
 .leaderboard-difficulty {
@@ -24,12 +58,15 @@
 }
 
 .leaderboard__wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-flow: column;
-    width: 500px;
-    border: black 1px solid;
-    padding: 10px;
-    border-radius: 5px;
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  width: 500px;
+  height: 70%;
+  border: black 1px solid;
+  padding: 10px;
+  border-radius: 5px;
+  overflow-y: auto;
+  z-index: 1;
+  background-color: white;
 }

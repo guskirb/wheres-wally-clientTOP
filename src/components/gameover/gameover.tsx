@@ -18,7 +18,7 @@ export default function GameOver({ score }) {
         method="POST"
         className="gameover__form"
         onSubmit={submitScore}
-      >
+      ><h1>Enter your name</h1>
         <input type="text" name="name" id="name" placeholder="Name" />
         <button type="submit">Submit</button>
       </form>
