@@ -24,6 +24,6 @@ export function updateScoreName(data, id) {
 export function getScores(difficulty: string) {
   return axios
     .get(`/scores?difficulty=${difficulty}`)
-    .then((response) => response.data)
+    .then((response) => response.data.scores)
     .catch((error) => error.response);
 }

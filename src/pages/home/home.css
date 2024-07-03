@@ -14,14 +14,14 @@
 }
 
 .wally {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    transition: all 0.5s ease-in-out;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  transition: all 0.5s ease-in-out;
 }
 
 .wally:hover {
-    transform: translateX(150px)
+  transform: translateX(150px);
 }
 
 .difficulty__container {

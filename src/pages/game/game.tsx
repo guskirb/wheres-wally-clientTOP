@@ -1,6 +1,5 @@
 import Photo from "../../components/photo/photo";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { getCharacters } from "../../api/characters";
 import { newScore, updateScore } from "../../api/score";
 
@@ -14,7 +13,6 @@ export default function Game({
   photo: File;
   difficulty: string;
 }) {
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [gameOver, setGameOver] = useState(false);
   const [characters, setCharacters] = useState([]);
@@ -59,14 +57,12 @@ export default function Game({
       });
 
       if (gameOver) {
-        console.log("Game won");
         endScore();
         setGameOver(true);
-        // navigate("/leaderboard");
       }
     }
   }, [characters]);
-  console.log(score);
+
   function clickCoords(e) {
     const { left, top, width, height } =
       e.currentTarget.getBoundingClientRect();
@@ -89,7 +85,6 @@ export default function Game({
     const index = characters.map((item) => item.name).indexOf(name);
     const x = (coords.x / dimensions.width) * 100;
     const y = (coords.y / dimensions.height) * 100;
-    console.log(x, y);
 
     if (
       x < characters[index].coords.x + 2 &&
@@ -97,12 +92,9 @@ export default function Game({
       y < characters[index].coords.y + 4 &&
       y > characters[index].coords.y - 4
     ) {
-      console.log(true);
       const updatedCharacters = [...characters];
       updatedCharacters[index].found = true;
       setCharacters(updatedCharacters);
-    } else {
-      console.log(false);
     }
   }
 
