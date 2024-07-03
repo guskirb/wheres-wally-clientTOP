@@ -1,0 +1,13 @@
+.score__grid {
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+h2 {
+  color: #ee3a33;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  font-weight: 700;
+}

@@ -46,6 +46,9 @@ export default function Home() {
           </div>
         </Link>
       </div>
+      <Link to="/leaderboard">
+        Leaderboard
+      </Link>
     </div>
   );
 }
