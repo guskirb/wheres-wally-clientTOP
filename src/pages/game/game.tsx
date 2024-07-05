@@ -5,6 +5,7 @@ import { newScore, updateScore } from "../../api/score";
 
 import Tracker from "../../components/tracker/tracker";
 import GameOver from "../../components/gameover/gameover";
+import Timer from "../../components/timer/timer";
 
 export default function Game({
   photo,
@@ -109,6 +110,7 @@ export default function Game({
   return (
     <>
       <Tracker characters={characters} />
+      <Timer />
       <Photo
         photo={photo}
         characters={characters}

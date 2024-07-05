@@ -1,0 +1,29 @@
+.timer__container {
+  background-color: #00a3e3;
+  color: white;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-family: inherit;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  font-weight: 800;
+  position: fixed;
+  left: 70px;
+  top: 160px;
+  opacity: 0.5;
+  transition: all 0.2s ease-in-out;
+}
+
+.timer__container:hover {
+  opacity: 1;
+}
+
+.timer__container > p {
+  margin: 0;
+}
