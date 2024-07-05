@@ -59,9 +59,14 @@ export default function Photo({
         onClick={clickCoords}
         onMouseMove={handleMouseHover}
       ></img>
-      <button onClick={enableMagnifier} className="magnifier-button">
-        Show Magnifier
-      </button>
+      <button
+        onClick={enableMagnifier}
+        className={
+          showMagnifier
+            ? "magnifier-button active"
+            : "magnifier-button inactive"
+        }
+      ></button>
     </div>
   );
 }
