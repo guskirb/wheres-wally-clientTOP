@@ -40,6 +40,13 @@
   justify-content: center;
 }
 
+.circle__container > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+}
+
 .difficulty {
   content: "";
   width: 250px;

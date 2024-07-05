@@ -12,8 +12,8 @@ export default function Home() {
       <img src={logo} alt="" className="logo" />
       <img src={wally} alt="" className="wally" />
       <div className="difficulty__container">
-        <Link to="/play/easy">
-          <div className="circle__container">
+        <div className="circle__container">
+          <Link to="/play/easy">
             <div
               className="easy difficulty"
               style={{
@@ -21,10 +21,10 @@ export default function Home() {
               }}
             ></div>
             <h2>Easy</h2>
-          </div>
-        </Link>
-        <Link to="/play/medium">
-          <div className="circle__container">
+          </Link>
+        </div>
+        <div className="circle__container">
+          <Link to="/play/medium">
             <div
               className="medium difficulty"
               style={{
@@ -32,10 +32,10 @@ export default function Home() {
               }}
             ></div>
             <h2>Medium</h2>
-          </div>
-        </Link>
-        <Link to="/play/hard">
-          <div className="circle__container">
+          </Link>
+        </div>
+        <div className="circle__container">
+          <Link to="/play/hard">
             <div
               className="hard difficulty"
               style={{
@@ -43,12 +43,10 @@ export default function Home() {
               }}
             ></div>
             <h2>Hard</h2>
-          </div>
-        </Link>
+          </Link>
+        </div>
       </div>
-      <Link to="/leaderboard">
-        Leaderboard
-      </Link>
+      <Link to="/leaderboard">Leaderboard</Link>
     </div>
   );
 }
