@@ -46,7 +46,7 @@ export default function Home() {
           </Link>
         </div>
       </div>
-      <Link to="/leaderboard">Leaderboard</Link>
+      <Link to="/leaderboard"><button>Leaderboard</button></Link>
     </div>
   );
 }

@@ -32,12 +32,6 @@
   gap: 10px;
 }
 
-.header__container > div > button {
-  background-color: #00a3e3;
-  color: white;
-  border: 1px solid black;
-}
-
 .wally-leaderboard {
   position: absolute;
   transform: translateY(100px) translateX(-342px);
