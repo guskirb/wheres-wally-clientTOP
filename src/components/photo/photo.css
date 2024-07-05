@@ -32,3 +32,21 @@
 .active {
   background-color: #ee3a33;
 }
+
+.circle-found {
+  border: solid 3px #00a3e3;
+  outline: 1px solid black;
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.circle-not-found {
+  border: solid 3px #ee3a33;
+  outline: 1px solid black;
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}

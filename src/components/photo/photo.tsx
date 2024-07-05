@@ -13,6 +13,7 @@ export default function Photo({
   showMagnifier,
   setShowMagnifier,
   findCharacter,
+  circles,
 }) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
@@ -40,8 +41,16 @@ export default function Photo({
     });
   }
 
+  const listCircles = circles.map((circle) => (
+    <div
+      className={circle.found ? "circle-found" : "circle-not-found"}
+      style={{ left: `${circle.x - 20}px`, top: `${circle.y - 20}px` }}
+    ></div>
+  ));
+
   return (
     <div className="photo__container">
+      
       <Magnifier
         photo={photo}
         position={position}
@@ -53,6 +62,7 @@ export default function Photo({
         characters={characters}
         findCharacter={findCharacter}
       />
+      {listCircles}
       <img
         className="photo"
         src={photo}

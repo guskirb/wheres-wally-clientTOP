@@ -31,6 +31,7 @@
   border-radius: 5px;
   width: 95%;
   border: 1px solid black;
+  padding-inline: 5px;
 }
 
 .gameover__form > button {

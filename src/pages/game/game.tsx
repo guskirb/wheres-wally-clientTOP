@@ -30,6 +30,7 @@ export default function Game({
     x: 0,
     y: 0,
   });
+  const [circles, setCircles] = useState([]);
 
   useEffect(() => {
     async function gameSetup() {
@@ -88,14 +89,31 @@ export default function Game({
     const y = (coords.y / dimensions.height) * 100;
 
     if (
-      x < characters[index].coords.x + 2 &&
-      x > characters[index].coords.x - 2 &&
+      x < characters[index].coords.x + 3 &&
+      x > characters[index].coords.x - 3 &&
       y < characters[index].coords.y + 4 &&
       y > characters[index].coords.y - 4
     ) {
+      setCircles([
+        ...circles,
+        {
+          x: showFinder.x,
+          y: showFinder.y,
+          found: true,
+        },
+      ]);
       const updatedCharacters = [...characters];
       updatedCharacters[index].found = true;
       setCharacters(updatedCharacters);
+    } else {
+      setCircles([
+        ...circles,
+        {
+          x: showFinder.x,
+          y: showFinder.y,
+          found: false,
+        },
+      ]);
     }
   }
 
@@ -120,6 +138,7 @@ export default function Game({
         showMagnifier={showMagnifier}
         setShowMagnifier={setShowMagnifier}
         findCharacter={findCharacter}
+        circles={circles}
       />
     </>
   );
