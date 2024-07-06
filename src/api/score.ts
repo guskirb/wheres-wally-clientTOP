@@ -1,20 +1,20 @@
 import axios from "./axios";
 
-export function newScore(data) {
+export function newScore(data: any) {
   return axios
     .post("/scores/start", data)
     .then((response) => response.data.score)
     .catch((error) => error.response);
 }
 
-export function updateScore(id) {
+export function updateScore(id: string) {
   return axios
     .post(`/scores/${id}/end`)
     .then((response) => response.data.score)
     .catch((error) => error.response);
 }
 
-export function updateScoreName(data, id) {
+export function updateScoreName(data: any, id: string) {
   return axios
     .post(`/scores/${id}/name`, data)
     .then((response) => response.data)

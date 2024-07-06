@@ -4,6 +4,8 @@ import "./photo.css";
 import Magnifier from "../magnifier/magnifier";
 import Finder from "../finder/finder";
 
+import { ShowFinder, Circles } from "../../types/types";
+
 export default function Photo({
   photo,
   characters,
@@ -14,6 +16,16 @@ export default function Photo({
   setShowMagnifier,
   findCharacter,
   circles,
+}: {
+  photo: any;
+  characters: object;
+  clickCoords: any;
+  showFinder: ShowFinder;
+  setShowFinder: any;
+  showMagnifier: boolean;
+  setShowMagnifier: any;
+  findCharacter: any;
+  circles: Array<Circles>;
 }) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
@@ -27,7 +39,7 @@ export default function Photo({
     });
   }
 
-  function handleMouseHover(e) {
+  function handleMouseHover(e: any) {
     const { left, top, width, height } =
       e.currentTarget.getBoundingClientRect();
 
@@ -50,7 +62,6 @@ export default function Photo({
 
   return (
     <div className="photo__container">
-      
       <Magnifier
         photo={photo}
         position={position}

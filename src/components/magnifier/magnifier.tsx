@@ -1,5 +1,7 @@
 import "./magnifier.css";
 
+import { Position } from "../../types/types";
+
 export default function Magnifier({
   photo,
   position,
@@ -7,9 +9,9 @@ export default function Magnifier({
   cursorPosition,
 }: {
   photo: File;
-  position: object;
+  position: Position;
   showMagnifier: boolean;
-  cursorPosition: object;
+  cursorPosition: Position;
 }) {
   return (
     <div className="magnifier__container">

@@ -2,10 +2,10 @@ import { updateScoreName } from "../../api/score";
 import { useNavigate } from "react-router-dom";
 import "./gameover.css";
 
-export default function GameOver({ score }) {
+export default function GameOver({ score }: { score: { _id: string } }) {
   const navigate = useNavigate();
 
-  async function submitScore(e) {
+  async function submitScore(e: any) {
     e.preventDefault();
     await updateScoreName({ name: e.target.name.value }, score._id);
     navigate("/leaderboard", { state: score });
@@ -18,7 +18,8 @@ export default function GameOver({ score }) {
         method="POST"
         className="gameover__form"
         onSubmit={submitScore}
-      ><h1>Enter your name</h1>
+      >
+        <h1>Enter your name</h1>
         <input type="text" name="name" id="name" placeholder="Name" />
         <button type="submit">Submit</button>
       </form>

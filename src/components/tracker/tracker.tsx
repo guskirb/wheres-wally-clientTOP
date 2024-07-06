@@ -4,8 +4,14 @@ import wilma from "../../assets/wilma.png";
 import odlaw from "../../assets/odlaw.png";
 import whitebeard from "../../assets/whitebeard.png";
 
-export default function Tracker({ characters }) {
-  function renderSwitch(character) {
+import { Character } from "../../types/types";
+
+export default function Tracker({
+  characters,
+}: {
+  characters: Array<Character>;
+}) {
+  function renderSwitch(character: string) {
     switch (character) {
       case "wally":
         return { backgroundImage: `url(${wally})` };

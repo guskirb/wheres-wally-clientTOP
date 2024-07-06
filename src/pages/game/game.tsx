@@ -7,17 +7,19 @@ import Tracker from "../../components/tracker/tracker";
 import GameOver from "../../components/gameover/gameover";
 import Timer from "../../components/timer/timer";
 
+import { Character } from "../../types/types";
+
 export default function Game({
   photo,
   difficulty,
 }: {
-  photo: File;
+  photo: string;
   difficulty: string;
 }) {
   const [loading, setLoading] = useState(true);
   const [gameOver, setGameOver] = useState(false);
-  const [characters, setCharacters] = useState([]);
-  const [score, setScore] = useState([]);
+  const [characters, setCharacters] = useState([] as any);
+  const [score, setScore] = useState([] as any);
   const [dimensions, setDimensions] = useState({
     left: 0,
     top: 0,
@@ -30,7 +32,7 @@ export default function Game({
     x: 0,
     y: 0,
   });
-  const [circles, setCircles] = useState([]);
+  const [circles, setCircles] = useState([] as any);
 
   useEffect(() => {
     async function gameSetup() {
@@ -52,7 +54,7 @@ export default function Game({
     }
     if (characters.length === 4) {
       let gameOver = true;
-      characters.forEach((character) => {
+      characters.forEach((character: Character) => {
         if (!character.found) {
           gameOver = false;
         }
@@ -65,7 +67,7 @@ export default function Game({
     }
   }, [characters]);
 
-  function clickCoords(e) {
+  function clickCoords(e: any) {
     const { left, top, width, height } =
       e.currentTarget.getBoundingClientRect();
     setDimensions({
@@ -83,8 +85,14 @@ export default function Game({
     setShowMagnifier(false);
   }
 
-  function findCharacter(coords, name) {
-    const index = characters.map((item) => item.name).indexOf(name);
+  function findCharacter(
+    coords: {
+      x: number;
+      y: number;
+    },
+    name: string
+  ) {
+    const index = characters.map((item: Character) => item.name).indexOf(name);
     const x = (coords.x / dimensions.width) * 100;
     const y = (coords.y / dimensions.height) * 100;
 

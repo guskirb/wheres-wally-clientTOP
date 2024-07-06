@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import { getScores } from "../../api/score";
 import "./list-score.css";
 
-export default function ListScore({ difficulty }) {
+import { Score } from "../../types/types";
+
+export default function ListScore({ difficulty }: { difficulty: string }) {
   const [scores, setScores] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -14,14 +16,14 @@ export default function ListScore({ difficulty }) {
     }
     scores();
   }, [difficulty]);
-  
+
   if (loading) {
     return <p>Loading...</p>;
   }
 
   const listScores = scores
-    .sort((a, b) => a.score.seconds - b.score.seconds)
-    .map((score, index) => (
+    .sort((a: Score, b: Score) => a.score.seconds - b.score.seconds)
+    .map((score: Score, index) => (
       <>
         <p>{index + 1}</p>
         <p>{score.name}</p>
@@ -31,10 +33,10 @@ export default function ListScore({ difficulty }) {
 
   return (
     <div className="score__grid">
-        <h2>Rank</h2>
-        <h2>Name</h2>
-        <h2>Time</h2>
-       {listScores} 
+      <h2>Rank</h2>
+      <h2>Name</h2>
+      <h2>Time</h2>
+      {listScores}
     </div>
-    );
+  );
 }

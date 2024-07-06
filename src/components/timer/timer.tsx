@@ -4,7 +4,7 @@ import "./timer.css";
 export default function Timer() {
   const [time, setTime] = useState(0);
 
-  const timer = useRef();
+  const timer: any = useRef();
 
   useEffect(() => {
     timer.current = setInterval(() => {
@@ -21,10 +21,10 @@ export default function Timer() {
   );
 }
 
-function format(time) {
-  let hours = Math.floor((time / 60 / 60) % 24);
-  let minutes = Math.floor((time / 60) % 60);
-  let seconds = Math.floor(time % 60);
+function format(time: any) {
+  let hours: any = Math.floor((time / 60 / 60) % 24);
+  let minutes: any = Math.floor((time / 60) % 60);
+  let seconds: any = Math.floor(time % 60);
 
   hours = hours < 10 ? "0" + hours : hours;
   minutes = minutes < 10 ? "0" + minutes : minutes;
